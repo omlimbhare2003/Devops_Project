@@ -1,0 +1,61 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name">
+    <div *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched">
+      Name is required.
+    </div>
+  
+    <label for="username">Username:</label>
+    <input id="username" formControlName="username">
+    <div *ngIf="registrationForm.get('username')?.invalid && registrationForm.get('username')?.touched">
+      Username must be 4-16 characters long and contain no special characters.
+    </div>
+  
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email">
+    <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
+      Please enter a valid email address.
+    </div>
+  
+    <label for="address">Address:</label>
+    <input id="address" formControlName="address">
+    <div *ngIf="registrationForm.get('address')?.invalid && registrationForm.get('address')?.touched">
+      Address is required.
+    </div>
+  
+    <label for="password">Password:</label>
+    <input id="password" type="password" formControlName="password">
+    <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched">
+      Password must be at least 8 characters long and contain at least one letter.
+    </div>
+  
+    <label for="dob">Date of Birth:</label>
+    <input id="dob" type="date" formControlName="dob">
+    <div *ngIf="registrationForm.get('dob')?.invalid && registrationForm.get('dob')?.touched">
+      Date of Birth is required.
+    </div>
+  
+    <label for="country">Country:</label>
+    <select id="country" formControlName="country">
+      <option value="India">India</option>
+      <!-- Add more options as needed -->
+    </select>
+  
+    <label for="gender">Gender:</label>
+    <select id="gender" formControlName="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+  
+    <label>
+      <input type="checkbox" formControlName="agreeToTerms">
+      I agree to the terms and conditions
+    </label>
+    <div *ngIf="registrationForm.get('agreeToTerms')?.invalid && registrationForm.get('agreeToTerms')?.touched">
+      You must agree to the terms and conditions.
+    </div>
+  
+    <button type="submit" [disabled]="registrationForm.invalid">Submit</button>
+  </form>
+  
